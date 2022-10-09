@@ -7,14 +7,23 @@
 
 import Foundation
 
-// MARK: - Welcome
+struct Welcome: Codable {
+    let posts: [Post]
+    let total, skip, limit: Int
+}
+
+// MARK: - Post
 struct Post: Codable {
-    let userID, id: Int
+    let id: Int
     let title, body: String
+    let userID: Int
+    let tags: [String]
+    let reactions: Int
 
     enum CodingKeys: String, CodingKey {
-        case userID = "userId"
         case id, title, body
+        case userID = "userId"
+        case tags, reactions
     }
 }
 

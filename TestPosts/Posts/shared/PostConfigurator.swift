@@ -14,10 +14,11 @@ class PostConfigurator {
         let router = PostsRouter(viewController: view)
         view.interactor = interactor
         view.router = router
+        router.dataStorePosts = interactor
         return view
     }
-    static func singlePost(postId: Int?) -> SinglePostViewController {
-        let view = SinglePostViewController(postId: postId)
+    static func singlePost(id: Int?) -> SinglePostViewController {
+        let view = SinglePostViewController(postId: id)
         let presenter = SinglePostPresenter(view: view)
         let interactor = SinglePostInteractor(presenter: presenter)
         

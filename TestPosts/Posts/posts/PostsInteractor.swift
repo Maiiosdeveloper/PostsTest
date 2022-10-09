@@ -40,16 +40,25 @@ extension PostsInteractor: PostsBusinessLogic {
     }
     func fetchPosts(){
             let request = AF.request(BASE_URL)
-            request.responseDecodable(of: [Post].self) { (response) in
-            
-                guard let posts = response.value else { return}
-                self.postsViewModel = posts
-                self.presenter.notifyGetPostsFromApi()
+            request.responseDecodable(of: Welcome.self) { (response) in
+                switch response.result {
+                case .success(let data):
+                    let posts = data.posts
+                    self.postsViewModel = posts
+                    self.presenter.notifyGetPostsFromApi()
+                case .failure(let err):
+                    print(err)
+                }
+
             }
         
     }
 }
 extension PostsInteractor: PostsDataStore{
+    var dataStore: Int? {
+        postId
+    }
+    
     var postIdSelected: Int? {
         postId
     }

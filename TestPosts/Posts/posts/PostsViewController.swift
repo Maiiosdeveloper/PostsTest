@@ -13,13 +13,14 @@ protocol PostsDisplayLogic {
 class PostsViewController: UIViewController {
 
     @IBOutlet weak var postsTableView: UITableView!
-    var interactor: ( PostsBusinessLogic & PostsDataStore)?
+    var interactor: PostsBusinessLogic?
     var router: ( PostsRoutingLogic & PostsDataPassing )?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configurePostsTableView()
-        interactor?.fetchPosts()
+        interactor!.fetchPosts()
     }
     override func viewWillAppear(_ animated: Bool) {
         
@@ -55,7 +56,9 @@ extension PostsViewController: UITableViewDelegate {
         return 90
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        interactor?.didSelectPost(at: indexPath.row)
+        
+        router?.routeToSinglePage(id: indexPath.row)
+//        interactor?.didSelectPost(at: indexPath.row)
     }
 }
 extension PostsViewController: UITableViewDataSource {
@@ -65,7 +68,7 @@ extension PostsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
         interactor?.fillPostCell(for: cell, row: indexPath.row)
         return cell
     }

@@ -7,7 +7,8 @@
 
 import Foundation
 import Alamofire
-let BASE_URL = "https://jsonplaceholder.typicode.com/posts"
+//let BASE_URL = "https://jsonplaceholder.typicode.com/posts"
+let BASE_URL = "https://dummyjson.com/posts"
 protocol PostsNetworkingLogic {
     func callPostsApi() -> [Post]?
 }
