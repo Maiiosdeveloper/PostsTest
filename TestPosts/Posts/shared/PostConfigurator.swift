@@ -17,11 +17,12 @@ class PostConfigurator {
         router.dataStorePosts = interactor
         return view
     }
-    static func singlePost(id: Int?) -> SinglePostViewController {
-        let view = SinglePostViewController(postId: id)
+    static func singlePost(post: Post?,delegate: SinglePostProtocol) -> SinglePostViewController {
+        let view = SinglePostViewController(post: post)
         let presenter = SinglePostPresenter(view: view)
-        let interactor = SinglePostInteractor(presenter: presenter)
-        
+        let interactor = SinglePostInteractor(presenter: presenter, delegate: delegate, post: post)
+    
+        interactor.delegate = delegate
         view.interactor = interactor
         
         return view

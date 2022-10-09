@@ -11,7 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SinglePostViewController" customModule="TestPosts" customModuleProvider="target">
             <connections>
                 <outlet property="descLabel" destination="ypk-Uc-WDg" id="nt0-R2-QqM"/>
+                <outlet property="tagsLabel" destination="DKk-gM-mJR" id="SHz-Yi-eGq"/>
                 <outlet property="titleLabel" destination="Ucm-Ia-s11" id="Zsg-TT-VIL"/>
+                <outlet property="userIdLabel" destination="Jkh-Nb-A3j" id="BIZ-cQ-6tN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,10 +26,10 @@
                     <rect key="frame" x="0.0" y="47" width="390" height="763"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IvV-jp-SB0">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="122.66666666666667"/>
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="195.33333333333334"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="JKT-tm-zTc">
-                                    <rect key="frame" x="16" y="15.999999999999996" width="358" height="56.666666666666657"/>
+                                    <rect key="frame" x="16" y="16" width="358" height="129.33333333333334"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucm-Ia-s11">
                                             <rect key="frame" x="0.0" y="0.0" width="358" height="20.333333333333332"/>
@@ -37,6 +39,18 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypk-Uc-WDg">
                                             <rect key="frame" x="0.0" y="36.333333333333329" width="358" height="20.333333333333329"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" systemColor="systemGray2Color"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKk-gM-mJR">
+                                            <rect key="frame" x="0.0" y="72.666666666666657" width="358" height="20.333333333333329"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" systemColor="systemGray2Color"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jkh-Nb-A3j">
+                                            <rect key="frame" x="0.0" y="109" width="358" height="20.333333333333343"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                             <color key="textColor" systemColor="systemGray2Color"/>
                                             <nil key="highlightedColor"/>

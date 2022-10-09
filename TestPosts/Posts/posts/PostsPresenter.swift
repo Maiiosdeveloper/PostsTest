@@ -9,6 +9,7 @@ import Foundation
 protocol PostsPresentationLogic {
     func notifyGetPostsFromApi()
     func selectSinglePost()
+    func fillPostFromSinglePostScreen(post: Post?)
 }
 class PostsPresenter {
     var view: PostsDisplayLogic
@@ -17,6 +18,10 @@ class PostsPresenter {
     }
 }
 extension PostsPresenter: PostsPresentationLogic {
+    func fillPostFromSinglePostScreen(post: Post?) {
+        view.fillPostFromSinglePostScreen(post: post)
+    }
+    
     func selectSinglePost() {
         view.selectSinglePost()
     }

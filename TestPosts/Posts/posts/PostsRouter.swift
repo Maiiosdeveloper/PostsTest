@@ -7,8 +7,8 @@
 
 import Foundation
 protocol PostsRoutingLogic {
-    func routeToSinglePost()
-    func routeToSinglePage(id: Int)
+    func routeToSinglePost(index:Int)
+    
 }
 protocol PostsDataPassing{
     var dataStore: PostsDataStore? { get }
@@ -22,14 +22,9 @@ class PostsRouter {
 }
 
 extension PostsRouter: PostsRoutingLogic {
-    func routeToSinglePage(id: Int) {
-        let view = SinglePostViewController(postId: id)
-        viewController.navigationController?.pushViewController(view, animated: true)
-    }
     
-    func routeToSinglePost() {
-        print("==========\(dataStorePosts?.postIdSelected)")
-        let view = PostConfigurator.singlePost(id: dataStorePosts?.postIdSelected)
+    func routeToSinglePost(index:Int) {
+        let view = PostConfigurator.singlePost(post: dataStore?.posts?[index], delegate: viewController)
         viewController.navigationController?.pushViewController(view, animated: true)
     }
     

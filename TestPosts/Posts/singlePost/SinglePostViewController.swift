@@ -6,26 +6,54 @@
 //
 
 import UIKit
+protocol SinglePostProtocol {
+    func fillPost(with post: Post?)
+}
 protocol SinglePostDisplayLogic {
     func displayPost(post: Post)
 }
 class SinglePostViewController: UIViewController {
 
+    @IBOutlet weak var userIdLabel: UILabel!
+    @IBOutlet weak var tagsLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     var interactor: SinglePostBusinessLogic?
-    var postId: Int?
+    var post: Post?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        interactor?.getSinglePost(postId: postId)
-        
+        //interactor?.getSinglePost(postId: postId)
+        fillPostsData()
+        print(post!)
     }
 
-    init(postId: Int?){
+    func fillPostsData() {
+        if let post{
+            titleLabel.text = post.title
+            descLabel.text = post.body
+            userIdLabel.text = "user Id: \(post.userID)"
+            var tagString = "Tags: "
+            
+                for tag in post.tags{
+                    tagString.append("\(tag)\n")
+                }
+            tagsLabel.text = tagString
+           }
+        
+        
+        
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        interactor?.goBackToAllPosts()
+    }
+    init(post: Post?){
         super.init(nibName: nil, bundle: nil)
-        guard let postId else { return }
-        self.postId = postId
+        guard let post else { return }
+        self.post = post
         
     }
     
@@ -43,3 +71,4 @@ extension SinglePostViewController: SinglePostDisplayLogic {
     
     
 }
+

@@ -9,9 +9,13 @@ import UIKit
 protocol PostsDisplayLogic {
     func displayPosts()
     func selectSinglePost()
+    func fillPostFromSinglePostScreen(post: Post?)
 }
 class PostsViewController: UIViewController {
 
+    @IBOutlet weak var userIdLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var postsTableView: UITableView!
     var interactor: PostsBusinessLogic?
     var router: ( PostsRoutingLogic & PostsDataPassing )?
@@ -40,8 +44,14 @@ class PostsViewController: UIViewController {
 
 }
 extension PostsViewController: PostsDisplayLogic {
+    func fillPostFromSinglePostScreen(post: Post?) {
+        nameLabel.text = post?.title
+        descLabel.text = post?.body
+        userIdLabel.text = "userID: \(post?.userID)"
+    }
+    
     func selectSinglePost() {
-        router?.routeToSinglePost()
+        //router?.routeToSinglePost(post: <#Post#>)
     }
     
     func displayPosts() {
@@ -56,8 +66,9 @@ extension PostsViewController: UITableViewDelegate {
         return 90
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //router?.routeToSinglePost(post: router?.dataStore?.postSelected)
         
-        router?.routeToSinglePage(id: indexPath.row)
+        router?.routeToSinglePost(index: indexPath.row)
 //        interactor?.didSelectPost(at: indexPath.row)
     }
 }
@@ -71,6 +82,16 @@ extension PostsViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
         interactor?.fillPostCell(for: cell, row: indexPath.row)
         return cell
+    }
+    
+    
+}
+extension PostsViewController: SinglePostProtocol {
+    func fillPost(with post: Post?) {
+        print("0000000000")
+        nameLabel.text = post?.title
+        descLabel.text = post?.body
+        userIdLabel.text = "userID: \(post?.userID)"
     }
     
     
